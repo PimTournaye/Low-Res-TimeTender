@@ -1,4 +1,3 @@
-// MQTTManager.cpp
 #include "MQTTManager.h"
 
 MQTTManager::MQTTManager(Client& client, const char* server, uint16_t port, const char* topicBase)
@@ -10,7 +9,7 @@ MQTTManager::MQTTManager(Client& client, const char* server, uint16_t port, cons
 void MQTTManager::connect() {
     while (!mqttClient.connected()) {
         Serial.println("Connecting to MQTT...");
-        if (mqttClient.connect("ESP32Client")) { // Use a unique client ID
+        if (mqttClient.connect("ESP32Client")) { 
             Serial.println("connected");
             // Subscribe to control commands here if necessary
         } else {
