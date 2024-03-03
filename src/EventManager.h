@@ -1,17 +1,16 @@
 #ifndef EventManager_h
 #define EventManager_h
 
-#include "GameState.h"
-#include <PubSubClient.h>
+#include "TimeManager.h"
 
 class EventManager {
 public:
-    EventManager(GameState& gameState, PubSubClient& mqttClient);
+    EventManager(TimeManager& timeManager, PubSubClient& mqttClient);
     void checkForEvents();
     void syncState();
 
 private:
-    GameState& gameState;
+    TimeManager& timeManager;
     PubSubClient& mqttClient;
 };
 
