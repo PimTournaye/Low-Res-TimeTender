@@ -1,27 +1,27 @@
-#ifndef DisplayManager_h
-#define DisplayManager_h
+// #ifndef DisplayManager_h
+// #define DisplayManager_h
 
-#include "TimeManager.h"
-// #include <Adafruit_GFX.h>
-// #include <Adafruit_SSD1306.h>
-#include <Adafruit_NeoPixel.h>
+// #include "TimeManager.h"
+// // #include <Adafruit_GFX.h>
+// // #include <Adafruit_SSD1306.h>
+// #include <Adafruit_NeoPixel.h>
 
-// Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+// // Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 
-class DisplayManager {
-public:
-    DisplayManager(TimeManager& timeManager, Adafruit_NeoPixel& pixels1, Adafruit_NeoPixel& pixels2, U8G2& oledDisplay);
-    void updateDisplay();
-    void updateEnergyStick
+// class DisplayManager {
+// public:
+//     DisplayManager(TimeManager& timeManager, Adafruit_NeoPixel& pixels1, Adafruit_NeoPixel& pixels2, U8G2& oledDisplay);
+//     void updateDisplay();
+//     void updateEnergyStick
 
-private:
-    TimeManager& timeManager;
-    Adafruit_NeoPixel& pixels1;
-    Adafruit_NeoPixel& pixels2;
-};
+// private:
+//     TimeManager& timeManager;
+//     Adafruit_NeoPixel& pixels1;
+//     Adafruit_NeoPixel& pixels2;
+// };
 
-#endif
+// #endif
 
 // if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
 //     Serial.println(F("SSD1306 allocation failed"));

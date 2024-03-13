@@ -13,9 +13,10 @@ public:
   // Updates the position of the encoder
   void update();
   // Returns the current position of the encoder
-  long getPosition();
+  int getPosition();
   // Returns true if the encoder is currently rotating
   bool isRotating();
+  int getRotationSpeed();
 
 private:
   // Constructor stuff
@@ -31,6 +32,8 @@ private:
   int lastRotating;
   // Time to wait before we consider the encoder to have stopped rotating
   int rotatingTimeout = 200;
+  unsigned long lastRotationTime;
+  int rotationSpeed;
 };
 
 #endif

@@ -1,7 +1,9 @@
 #include "WiFiManager.h"
 
-WiFiManager::WiFiManager(const char* ssid, const char* password, const char* serverUrl)
-: ssid(ssid), password(password), serverUrl(serverUrl) {}
+// Constructor
+WiFiManager::WiFiManager(const char* ssid, const char* password, const char* serverUrl) : ssid(ssid), password(password), serverUrl(serverUrl) {
+    
+}
 
 void WiFiManager::connectToWiFi() {
     Serial.print("Connecting to WiFi...");
@@ -24,23 +26,27 @@ void WiFiManager::syncTime() {
     Serial.println("Time synced");
 }
 
-void WiFiManager::sendTimeToServer(int timePassed) {
+bool WiFiManager::sendTimeToServer(int timePassed) {
     if (WiFi.status() == WL_CONNECTED) {
         HTTPClient http;
-        http.begin(serverUrl); // Specify the API endpoint
+        http.begin(serverUrl); // Make sure serverUrl includes the /state endpoint
         http.addHeader("Content-Type", "application/json");
         
-        // Prepare your JSON payload string
         String payload = "{\"timePassed\": " + String(timePassed) + "}";
         
         int httpResponseCode = http.POST(payload);
-        if (httpResponseCode > 0) {
+        if (httpResponseCode == 200) {
             Serial.println("Data sent successfully");
+
         } else {
-            Serial.println("Error sending data");
+            Serial.print("Error sending data, response code: ");
+            Serial.println(httpResponseCode);
         }
         http.end();
+        return true;
     } else {
         Serial.println("WiFi not connected");
+        return false;
     }
 }
+

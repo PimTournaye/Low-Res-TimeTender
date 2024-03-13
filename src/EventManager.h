@@ -11,7 +11,6 @@ public:
 
 private:
     TimeManager& timeManager;
-    PubSubClient& mqttClient;
 };
 
 #endif
